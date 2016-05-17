@@ -36,3 +36,32 @@ begin
         xor_o <= xor_i1 xor xor_i2;
     end process;
 end behv;
+
+
+----------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity ha is
+    port( ha_i1: in STD_LOGIC;
+          ha_i2: in STD_LOGIC;
+          ha_total: out STD_LOGIC;
+          ha_carry: out STD_LOGIC);
+end ha;
+
+architecture behv of ha is
+    component XOR_GATE is
+      port( xor_i1: in STD_LOGIC;
+            xor_i2: in STD_LOGIC;
+            xor_o:  in STD_LOGIC);
+    end component;
+    component AND_GATE is
+      port( and_i1: in STD_LOGIC;
+            and_i2: in STD_LOGIC;
+            and_o: in STD_LOGIC);
+    end component;
+begin
+    block1: XOR_GATE port map(xor_i1 => ha_i1,xor_i2 => ha_i2,xor_o => ha_total);
+    block2: AND_GATE port map(and_i1 => ha_i1,and_i2 => ha_i2, and_o => ha_carry);
+end behv;
