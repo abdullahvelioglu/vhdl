@@ -18,3 +18,21 @@ end behv;
 
 
 ---------------------------------------------------
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity XOR_GATE is
+    port( xor_i1: in STD_LOGIC;
+          xor_i2: in STD_LOGIC;
+          xor_o:  in STD_LOGIC);
+end XOR_GATE;
+
+architecture behv of XOR_GATE is
+
+begin
+    process(xor_i1,xor_i2)
+    begin
+        xor_o <= xor_i1 xor xor_i2;
+    end process;
+end behv;
